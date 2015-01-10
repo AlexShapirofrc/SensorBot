@@ -22,10 +22,10 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-    	ultra = new AnalogInput(3);
+    	ultra = new AnalogInput(0);
     	tall = new Talon(0);
     	talr = new Talon(1);
-    	gyro = new Gyro(2);
+    	gyro = new Gyro(1);
     }
 
     /**
