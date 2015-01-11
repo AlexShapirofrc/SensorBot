@@ -6,9 +6,13 @@ import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.AnalogInput;
-
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Timer;
 public class Robot extends IterativeRobot {
-    Talon tall;
+	Encoder encodel;
+	Encoder encoder;
+	//left and right encoders
+	Talon tall;
 	Talon talr;
 	//left and right talons
 	AnalogInput ultra;
@@ -17,6 +21,11 @@ public class Robot extends IterativeRobot {
 	//gets object distance with voltage
 	double angle = gyro.getAngle();
 	//gets angle of robot from gyro
+	double leftwheelrate = encodel.getRate();
+	double rightwheelrate = encoder.getRate();
+	//gets rotation rate from both wheels
+	Timer time;
+	double timepassed = time.get();
 	/**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -26,6 +35,9 @@ public class Robot extends IterativeRobot {
     	tall = new Talon(0);
     	talr = new Talon(1);
     	gyro = new Gyro(1);
+    	encodel = new Encoder(4,5);
+    	encoder = new Encoder(2,3);
+    	time = new Timer();
     }
 
     /**
